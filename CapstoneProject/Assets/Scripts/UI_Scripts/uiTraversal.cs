@@ -39,8 +39,8 @@ public class uiTraversal : MonoBehaviour
     //If selected = quit game to desktop
     public void quitGame()
     {
-        //Application.Quit();
+        Application.Quit();
 
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 }

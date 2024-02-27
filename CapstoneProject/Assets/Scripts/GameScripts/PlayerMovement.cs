@@ -1,61 +1,97 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     //Variables for Character Movement//
     float horizontalInput;
     float moveSpeed = 5f;
-    float jumpSpeed = 5f;
 
-    bool isFacingLeft = false;
-    bool isJumping = false;
 
-    Rigidbody2D rb;
+    float jumpHeight = 10f;
+    int maxJumps = 1;
 
-    //built-in functions//
+
+    bool isGrounded = false;
+    //bool isFacingLeft = false;
+
+    public Rigidbody2D rb;
+
+    Animator animator;
+
+
+    //Audio Sources
+    [SerializeField] private AudioSource JabSoundEffect;
+    [SerializeField] private AudioSource PunchSoundEffect;
+
+    //Start
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
+    //Updates
     void Update()
-    {
-        horizontalInput = Input.GetAxis("Horizontal");
-
-        FlipCharacter();
-
-        if(Input.GetButtonDown("Jump") && !isJumping)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-        }
-
-    }
-
-
-    //custom functions//
-
-    //function to flip the character
-    void FlipCharacter()
-    {
-        if (isFacingLeft && horizontalInput > 0f || !isFacingLeft && horizontalInput < 0f)
-        {
-            isFacingLeft = !isFacingLeft;
-            Vector3 ls = transform.localScale;
-            ls.x *= -1f;
-            transform.localScale = ls;
-        }
-    }
-
-    //Unity functions//
-    private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void FixedUpdate()
     {
-        isJumping = false;
+        animator.SetFloat("HorizontalMovement", Math.Abs(rb.velocity.x));
+        animator.SetFloat("VerticalMovement", rb.velocity.y);
+    }
+
+    //Movement
+    public void Move(InputAction.CallbackContext context)
+    {
+        horizontalInput = context.ReadValue<Vector2>().x;
+    }
+    
+    //Jumping
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.performed && isGrounded && maxJumps > 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+            animator.SetBool("isJumping", isGrounded);
+            --maxJumps;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        isGrounded = true;
+        animator.SetBool("isJumping", !isGrounded);
+        maxJumps = 1;
+    }
+
+    //Attacks
+    public void Jab(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (isGrounded)
+            {
+                JabSoundEffect.Play();
+                animator.SetTrigger("Jab");
+            }
+        }
+    }
+
+    public void Punch(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (isGrounded)
+            {
+                PunchSoundEffect.Play();
+                animator.SetTrigger("Punch");
+            }
+        }    
     }
 }
