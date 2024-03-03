@@ -9,18 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/UI_Scenes/TitleScreen.unity
     guid: 657c5c0181c7f0149b44ad7d0c8a8b73
   - enabled: 1
-    path: Assets/Scenes/UI_Scenes/StartScreen.unity
+    path: Assets/Scenes/UI_Scenes/MainMenu.unity
     guid: 1c941e638b858434b95b5c1716614853
   - enabled: 1
-    path: Assets/Scenes/UI_Scenes/PlayerSelectScreen.unity
-    guid: 5bf6bc125724a7748bd25bfc8a5bd95e
-  - enabled: 1
-    path: Assets/Scenes/UI_Scenes/OptionsScreen.unity
-    guid: 77408897311d59543b91a17a6baa9ed3
-  - enabled: 1
-    path: Assets/Scenes/UI_Scenes/CharacterSelectScreen1P.unity
-    guid: 6a9a74e7384f3894e90010f63fa16d0b
-  - enabled: 1
-    path: Assets/Scenes/UI_Scenes/StageSelectScreen.unity
-    guid: bad606a7d48f5ba4cb26f8efd5d69c8e
+    path: Assets/Scenes/UI_Scenes/GameOptions.unity
+    guid: a372f5cfbc5357447842dad0f737ccf4
   m_configObjects: {}

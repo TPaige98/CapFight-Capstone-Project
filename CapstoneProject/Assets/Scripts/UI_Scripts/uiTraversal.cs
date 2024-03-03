@@ -2,45 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class uiTraversal : MonoBehaviour
 {
-    //if selected = go to single/multiplayer select screen
-    public void playerSelect()
+    public Animator animator;
+
+    //Fade to Start Scene
+    public void FadeStart()
     {
-        SceneManager.LoadScene("PlayerSelectScreen");
+        animator.SetTrigger("FadeOutStart");
     }
 
-    //If selected = go to single player character select screen
-    public void characterSelect1P()
+    public void FadeCompleteMainMenu()
     {
-        SceneManager.LoadScene("CharacterSelectScreen1P");
+        SceneManager.LoadScene("MainMenu");
     }
 
-    //If selected = go to multi player character select screen
-    //For Future Iterations of the Game
-    //public void characterSelect2P()
-    //{
-    //    SceneManager.LoadScene("CharacterSelectScreen2P");
-    //}
-
-    //If selected = go to options screen
-    public void optionsSelect()
+    //Fade to Game Scene
+    public void FadeGame()
     {
-        SceneManager.LoadScene("OptionsScreen");
+        animator.SetTrigger("FadeOutGame");
     }
 
-    //If selected = return to main menu
-    public void returnMenu()
+    public void FadeCompleteGameOptions()
     {
-        SceneManager.LoadScene("StartScreen");
+        SceneManager.LoadScene("GameOptions");
     }
-
-    //If selected = quit game to desktop
+    
     public void quitGame()
     {
-        Application.Quit();
+        //Application.Quit();
 
-        //UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }
