@@ -29,6 +29,16 @@ public class uiTraversal : MonoBehaviour
     {
         SceneManager.LoadScene("GameOptions");
     }
+
+    public void FadeGameStart()
+    {
+        animator.SetTrigger("FadeOutGameStart");
+    }
+
+    public void FadeCompleteGameStart()
+    {
+        SceneManager.LoadScene("GameState");
+    }
     
     public void quitGame()
     {

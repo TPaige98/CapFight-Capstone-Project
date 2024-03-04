@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     float moveSpeed = 5f;
 
 
-    float jumpHeight = 10f;
+    float jumpHeight = 9.25f;
     int maxJumps = 1;
 
 
@@ -75,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isGrounded)
             {
-                JabSoundEffect.Play();
+                //JabSoundEffect.Play();
                 animator.SetTrigger("Jab");
             }
         }
@@ -87,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isGrounded)
             {
-                PunchSoundEffect.Play();
+                //PunchSoundEffect.Play();
                 animator.SetTrigger("Punch");
             }
         }    
