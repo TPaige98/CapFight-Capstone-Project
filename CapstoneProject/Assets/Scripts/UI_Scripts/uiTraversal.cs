@@ -19,7 +19,7 @@ public class uiTraversal : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    //Fade to Game Scene
+    //Fade to Game Options Scene
     public void FadeGame()
     {
         animator.SetTrigger("FadeOutGame");
@@ -30,6 +30,7 @@ public class uiTraversal : MonoBehaviour
         SceneManager.LoadScene("GameOptions");
     }
 
+    //Fade to Game State Scene
     public void FadeGameStart()
     {
         animator.SetTrigger("FadeOutGameStart");
@@ -40,6 +41,7 @@ public class uiTraversal : MonoBehaviour
         SceneManager.LoadScene("GameState");
     }
     
+    //Quit Game
     public void quitGame()
     {
         Application.Quit();

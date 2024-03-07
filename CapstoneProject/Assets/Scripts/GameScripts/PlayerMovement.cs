@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -8,20 +7,34 @@ public class PlayerMovement : MonoBehaviour
 {
     //Variables for Character Movement//
     float horizontalInput;
-    float moveSpeed = 5f;
+    public float walkSpeed;
 
+    //Varibles for Character Jumping
+    public float jumpHeight;
+    int maxJumps = 2;
+    int jumpsLeft;
 
-    float jumpHeight = 9.25f;
-    int maxJumps = 1;
+    //Variables for Checking Ground
+    public Transform groundCheckPos;
+    public Vector2 groundCheckSize = new Vector2(1.45f, 0.05f);
+    public LayerMask groundLayer;
 
+    //Variables for Gravity
+    public float initialGravity = 2f;
+    public float maxGravity = 20f;
+    public float fallSpeedGravity = 2f;
 
-    bool isGrounded = false;
-    //bool isFacingLeft = false;
+    //Variables for Blocking and Direction
+    bool isBlocking;
+    bool isCrouching;
+    bool isFacingRight = true;
 
+    //Variables for Unity Objects
     public Rigidbody2D rb;
+    public Transform opponentTransform;
+    public Timer timerScript;
 
     Animator animator;
-
 
     //Audio Sources
     [SerializeField] private AudioSource JabSoundEffect;
@@ -37,61 +50,170 @@ public class PlayerMovement : MonoBehaviour
     //Updates
     void Update()
     {
-        rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
-    }
+        if (timerScript != null && timerScript.countdown > 0)
+        {
+            horizontalInput = 0f;
+            rb.velocity = Vector2.zero;
+        }
+        else
+        {
+            if (isGrounded())
+            {
+                rb.velocity = new Vector2(horizontalInput * walkSpeed, rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
 
-    private void FixedUpdate()
-    {
+            }
+        }
+
+        animator.SetBool("isCrouching", isCrouching);
+        animator.SetBool("isBlocking", isBlocking);
         animator.SetFloat("HorizontalMovement", Math.Abs(rb.velocity.x));
         animator.SetFloat("VerticalMovement", rb.velocity.y);
+
+        FlipCharacter();
+        doubleJump();
+        gravity();
     }
 
     //Movement
     public void Move(InputAction.CallbackContext context)
     {
         horizontalInput = context.ReadValue<Vector2>().x;
+        rb.velocity = new Vector2(horizontalInput * walkSpeed, rb.velocity.y);
+    }
+
+    void FlipCharacter()
+    {
+        if (!isFacingRight && horizontalInput > 0f || isFacingRight && horizontalInput < 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
     }
     
-    //Jumping
+    //JUMPING --------------------------------------------------------------- JUMPING//
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded && maxJumps > 0)
+        if (jumpsLeft > 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-            animator.SetBool("isJumping", isGrounded);
-            --maxJumps;
+            if (context.performed && context.action.name == "Jump" && timerScript.countdown <= 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                animator.SetBool("isJumping", true);
+                jumpsLeft--;
+            }
+            else if (context.canceled && context.action.name == "Jump" && timerScript.countdown <= 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+                animator.SetBool("isJumping", true);
+                jumpsLeft--;
+            }
+        }
+        Debug.Log("Is Character Jumping: ");
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Vector2 direction = (transform.position - collision.transform.position).normalized;
+            rb.AddForce(direction * 8f, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.down * 5f, ForceMode2D.Impulse);
+        }
+
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            animator.SetBool("isJumping", false);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private bool isGrounded()
     {
-        isGrounded = true;
-        animator.SetBool("isJumping", !isGrounded);
-        maxJumps = 1;
+        return Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer);
+    }
+
+    private void doubleJump()
+    {
+        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
+        {
+            jumpsLeft = maxJumps;
+        }
     }
 
     //Attacks
     public void Jab(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && timerScript.countdown <= 0 && isGrounded())
         {
-            if (isGrounded)
-            {
-                //JabSoundEffect.Play();
                 animator.SetTrigger("Jab");
-            }
         }
     }
 
     public void Punch(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && timerScript.countdown <= 0 && isGrounded())
         {
-            if (isGrounded)
-            {
-                //PunchSoundEffect.Play();
-                animator.SetTrigger("Punch");
-            }
+            animator.SetTrigger("Punch");
         }    
+    }
+
+    public void Block(InputAction.CallbackContext context)
+    {
+        if (context.performed && timerScript.countdown <= 0)
+        {
+            isBlocking = true;
+        }
+        else
+        {
+            isBlocking = false;
+        }
+    }
+
+    public void Crouch(InputAction.CallbackContext context)
+    {
+        if (context.performed && timerScript.countdown <= 0)
+        {
+            isCrouching = true;
+        }
+        else
+        {
+            isCrouching = false;
+        }
+    }
+
+    public void CrouchBlock(InputAction.CallbackContext context)
+    {
+        if (context.performed && timerScript.countdown <=0)
+        {
+            animator.SetBool("isCrouchBlocking", true);
+        }
+        if (context.canceled)
+        {
+
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
+    }
+
+    private void gravity()
+    {
+        if (rb.velocity.y < 0)
+        {
+            rb.gravityScale = initialGravity * fallSpeedGravity;
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -maxGravity));
+        }
+        else
+        {
+            rb.gravityScale = initialGravity;
+        }
     }
 }

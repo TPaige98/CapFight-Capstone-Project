@@ -7,11 +7,15 @@ TagManager:
   - Music
   - xMusic
   - Effect
+  - Stage
+  - Enemy
+  - Ground
+  - Timer
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
