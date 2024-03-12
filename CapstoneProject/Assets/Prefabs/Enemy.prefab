@@ -78,10 +78,11 @@ GameObject:
   - component: {fileID: 9103247858143208827}
   - component: {fileID: 486769113489739005}
   - component: {fileID: 6264278120214627737}
-  - component: {fileID: 5559476495391490263}
   - component: {fileID: 7155999579319529353}
   - component: {fileID: 9128779729709052150}
   - component: {fileID: 2625688840778691126}
+  - component: {fileID: 6089958820148161704}
+  - component: {fileID: 6952030317056222284}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -202,41 +203,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.17865217, y: 0.6078572}
   m_EdgeRadius: 0
---- !u!70 &5559476495391490263
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8568889547678151672}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.02586627, y: -0.3113225}
-  m_Size: {x: 0.4230685, y: 0.089402765}
-  m_Direction: 1
 --- !u!50 &7155999579319529353
 Rigidbody2D:
   serializedVersion: 4
@@ -447,3 +413,33 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6089958820148161704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8568889547678151672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e10872023c8e724c8d43bd7c7662a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  animations: {fileID: 0}
+  isFlipped: 0
+--- !u!114 &6952030317056222284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8568889547678151672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d7d26d511f8b94ebf1d49c56813845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  healthBar: {fileID: 0}
+  timerScript: {fileID: 0}

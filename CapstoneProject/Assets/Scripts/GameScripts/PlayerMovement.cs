@@ -150,7 +150,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed && timerScript.countdown <= 0 && isGrounded())
         {
-                animator.SetTrigger("Jab");
+             animator.SetTrigger("Jab");
+             JabSoundEffect.Play();
         }
     }
 
@@ -159,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && timerScript.countdown <= 0 && isGrounded())
         {
             animator.SetTrigger("Punch");
+            PunchSoundEffect.Play();
         }    
     }
 
