@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963b8534dce08d642913c8f3aa95a2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 5
+  damage: 5
 --- !u!82 &7186027808631736853
 AudioSource:
   m_ObjectHideFlags: 0
@@ -707,7 +707,7 @@ MonoBehaviour:
     m_ActionId: e944112d-0e56-46ad-8a4d-02736c25c767
     m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard1
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -750,7 +750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4f998e12683f64d84c8698ca7caa13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  max: 100
   healthBar: {fileID: 0}
   timerScript: {fileID: 0}
 --- !u!1 &8216273098756424985
@@ -799,7 +799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963b8534dce08d642913c8f3aa95a2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
+  damage: 10
 --- !u!61 &8461747699393515262
 BoxCollider2D:
   m_ObjectHideFlags: 0

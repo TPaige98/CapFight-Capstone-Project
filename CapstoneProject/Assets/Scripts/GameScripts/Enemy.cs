@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public Transform Player;
-    public EnemyAnimations animations;
+    //public EnemyAnimations animations;
 
     public bool isFlipped = false;
     private float jumpChance = 0.1f;
@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     {
         if (Random.value < jumpChance)
         {
-            animations.EnemyJump(GetComponent<Animator>());
+            //animations.EnemyJump(GetComponent<Animator>());
         }
     }
     public void LookAtPlayer()

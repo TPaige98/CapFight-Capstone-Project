@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //Variables for Character Movement//
+    //Variables for Character Movement
     float horizontalInput;
     public float walkSpeed;
 
@@ -50,32 +50,35 @@ public class PlayerMovement : MonoBehaviour
     //Updates
     void Update()
     {
-        if (timerScript != null && timerScript.countdown > 0)
+        if (!PauseMenu.isPaused)
         {
-            horizontalInput = 0f;
-            rb.velocity = Vector2.zero;
-        }
-        else
-        {
-            if (isGrounded())
+            if (timerScript != null && timerScript.countdown > 0)
             {
-                rb.velocity = new Vector2(horizontalInput * walkSpeed, rb.velocity.y);
+                horizontalInput = 0f;
+                rb.velocity = Vector2.zero;
             }
             else
             {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+                if (isGrounded())
+                {
+                    rb.velocity = new Vector2(horizontalInput * walkSpeed, rb.velocity.y);
+                }
+                else
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
 
+                }
             }
+
+            animator.SetBool("isCrouching", isCrouching);
+            animator.SetBool("isBlocking", isBlocking);
+            animator.SetFloat("HorizontalMovement", Math.Abs(rb.velocity.x));
+            animator.SetFloat("VerticalMovement", rb.velocity.y);
+
+            FlipCharacter();
+            doubleJump();
+            gravity();
         }
-
-        animator.SetBool("isCrouching", isCrouching);
-        animator.SetBool("isBlocking", isBlocking);
-        animator.SetFloat("HorizontalMovement", Math.Abs(rb.velocity.x));
-        animator.SetFloat("VerticalMovement", rb.velocity.y);
-
-        FlipCharacter();
-        doubleJump();
-        gravity();
     }
 
     //Movement

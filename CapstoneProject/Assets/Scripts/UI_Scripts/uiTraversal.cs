@@ -16,6 +16,7 @@ public class uiTraversal : MonoBehaviour
 
     public void FadeCompleteMainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -27,6 +28,7 @@ public class uiTraversal : MonoBehaviour
 
     public void FadeCompleteGameOptions()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("GameOptions");
     }
 
@@ -38,6 +40,7 @@ public class uiTraversal : MonoBehaviour
 
     public void FadeCompleteGameStart()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("GameState");
     }
     
