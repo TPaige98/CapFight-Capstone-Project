@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     //Variables for Character Movement
-    float horizontalInput;
+    public float horizontalInput;
     public float walkSpeed;
 
     //Varibles for Character Jumping
@@ -33,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Transform opponentTransform;
     public Timer timerScript;
-
     Animator animator;
 
     //Audio Sources
@@ -50,8 +49,9 @@ public class PlayerMovement : MonoBehaviour
     //Updates
     void Update()
     {
-        if (!PauseMenu.isPaused)
+        if (!PauseMenu.isPaused && !RestartMenu.isPaused)
         {
+            Debug.Log("Game is Paused, timer Countdown: " + timerScript.countdown);
             if (timerScript != null && timerScript.countdown > 0)
             {
                 horizontalInput = 0f;
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //Movement
+    //MOVEMENT ------------------------------------------------------------ MOVEMENT//
     public void Move(InputAction.CallbackContext context)
     {
         horizontalInput = context.ReadValue<Vector2>().x;
@@ -148,10 +148,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //Attacks
+    //ATTACKS ---------------------------------------------------------------------------------- ATTACKS//
     public void Jab(InputAction.CallbackContext context)
     {
-        if (context.performed && timerScript.countdown <= 0 && isGrounded())
+        if (context.performed && timerScript.countdown <= 0 && isGrounded() && !RestartMenu.isPaused && !PauseMenu.isPaused)
         {
              animator.SetTrigger("Jab");
              JabSoundEffect.Play();
@@ -160,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Punch(InputAction.CallbackContext context)
     {
-        if (context.performed && timerScript.countdown <= 0 && isGrounded())
+        if (context.performed && timerScript.countdown <= 0 && isGrounded() && !RestartMenu.isPaused && !PauseMenu.isPaused)
         {
             animator.SetTrigger("Punch");
             PunchSoundEffect.Play();
@@ -169,7 +169,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Block(InputAction.CallbackContext context)
     {
-        if (context.performed && timerScript.countdown <= 0)
+        if (context.performed && timerScript.countdown <= 0 && !RestartMenu.isPaused && !PauseMenu.isPaused)
         {
             isBlocking = true;
         }
@@ -181,7 +181,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Crouch(InputAction.CallbackContext context)
     {
-        if (context.performed && timerScript.countdown <= 0)
+        if (context.performed && timerScript.countdown <= 0 && !RestartMenu.isPaused && !PauseMenu.isPaused)
         {
             isCrouching = true;
         }
@@ -191,17 +191,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void CrouchBlock(InputAction.CallbackContext context)
-    {
-        if (context.performed && timerScript.countdown <=0)
-        {
-            animator.SetBool("isCrouchBlocking", true);
-        }
-        if (context.canceled)
-        {
+    //public void ResetCharacterState()
+    //{
+    //    Debug.Log("Resetting Character State");
+    //    horizontalInput = 0f;
+    //    rb.velocity = Vector2.zero;
 
-        }
-    }
+    //    animator.SetBool("isCrouching", false);
+    //    animator.SetBool("isBlocking", false);
+    //    animator.SetBool("isJumping", false);
+    //}
 
     private void OnDrawGizmosSelected()
     {

@@ -7,6 +7,13 @@ public class HealthBars : MonoBehaviour
 {
     public Slider slider;
 
+    public GameObject WinnerRestartMenu;
+
+    private void Start()
+    {
+        WinnerRestartMenu.SetActive(false);
+    }
+
     public void setMaxHealth(int health)
     {
         slider.maxValue = health;
@@ -16,5 +23,10 @@ public class HealthBars : MonoBehaviour
     public void setHealth(int health)
     {
         slider.value = health;
+
+        if (health <= 0)
+        {
+            WinnerRestartMenu.GetComponent<RestartMenu>().pauseGame();
+        }
     }
 }

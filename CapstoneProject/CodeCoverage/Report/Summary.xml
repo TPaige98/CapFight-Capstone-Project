@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageReport scope="Summary">
+  <Summary>
+    <Generatedon>4/2/2024 - 11:42:09 AM</Generatedon>
+    <Parser>OpenCoverParser</Parser>
+    <Assemblies>1</Assemblies>
+    <Classes>49</Classes>
+    <Files>49</Files>
+    <Coveredlines>0</Coveredlines>
+    <Uncoveredlines>2692</Uncoveredlines>
+    <Coverablelines>2692</Coverablelines>
+    <Totallines>5767</Totallines>
+    <Linecoverage>0</Linecoverage>
+    <Coveredbranches>0</Coveredbranches>
+    <Totalbranches>0</Totalbranches>
+    <Coveredmethods>0</Coveredmethods>
+    <Totalmethods>232</Totalmethods>
+    <Methodcoverage>0</Methodcoverage>
+  </Summary>
+  <Coverage>
+    <Assembly name="Assembly-CSharp" classes="49" coverage="0" coveredlines="0" coverablelines="2692" totallines="5767" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="232" methodcoverage="0">
+      <Class name="AudioManager" coverage="0" coveredlines="0" coverablelines="42" totallines="75" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
+      <Class name="AudioSettings" coverage="0" coveredlines="0" coverablelines="17" totallines="36" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="characterSelectRemember" coverage="0" coveredlines="0" coverablelines="3" totallines="12" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="ChatController" coverage="0" coveredlines="0" coverablelines="19" totallines="51" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="Damage" coverage="0" coveredlines="0" coverablelines="19" totallines="30" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="DropdownSample" coverage="0" coveredlines="0" coverablelines="6" totallines="19" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="Enemy" coverage="0" coveredlines="0" coverablelines="21" totallines="36" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="EnemyAnimations" coverage="0" coveredlines="0" coverablelines="46" totallines="99" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="6" methodcoverage="0" />
+      <Class name="EnemyHealth" coverage="0" coveredlines="0" coverablelines="13" totallines="29" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="EnvMapAnimator" coverage="0" coveredlines="0" coverablelines="12" totallines="35" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="HealthBars" coverage="0" coveredlines="0" coverablelines="14" totallines="32" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="OptionsMenu" coverage="0" coveredlines="0" coverablelines="3" totallines="13" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="PauseMenu" coverage="0" coveredlines="0" coverablelines="27" totallines="53" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
+      <Class name="PlayerHealth" coverage="0" coveredlines="0" coverablelines="13" totallines="30" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="PlayerMovement" coverage="0" coveredlines="0" coverablelines="143" totallines="224" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="16" methodcoverage="0" />
+      <Class name="RestartMenu" coverage="0" coveredlines="0" coverablelines="10" totallines="26" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="Timer" coverage="0" coveredlines="0" coverablelines="45" totallines="79" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="7" methodcoverage="0" />
+      <Class name="TMPro.Examples.Benchmark01" coverage="0" coveredlines="0" coverablelines="44" totallines="128" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="TMPro.Examples.Benchmark01_UGUI" coverage="0" coveredlines="0" coverablelines="39" totallines="135" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="TMPro.Examples.Benchmark02" coverage="0" coveredlines="0" coverablelines="54" totallines="97" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="TMPro.Examples.Benchmark03" coverage="0" coveredlines="0" coverablelines="46" totallines="92" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="TMPro.Examples.Benchmark04" coverage="0" coveredlines="0" coverablelines="30" totallines="85" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="TMPro.Examples.CameraController" coverage="0" coveredlines="0" coverablelines="168" totallines="292" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
+      <Class name="TMPro.Examples.ObjectSpin" coverage="0" coveredlines="0" coverablelines="30" totallines="69" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="TMPro.Examples.ShaderPropAnimator" coverage="0" coveredlines="0" coverablelines="16" totallines="51" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="TMPro.Examples.SimpleScript" coverage="0" coveredlines="0" coverablelines="11" totallines="58" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="TMPro.Examples.SkewTextExample" coverage="0" coveredlines="0" coverablelines="78" totallines="158" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
+      <Class name="TMPro.Examples.TeleType" coverage="0" coveredlines="0" coverablelines="28" totallines="83" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="TMPro.Examples.TextConsoleSimulator" coverage="0" coveredlines="0" coverablelines="60" totallines="121" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="7" methodcoverage="0" />
+      <Class name="TMPro.Examples.TextMeshProFloatingText" coverage="0" coveredlines="0" coverablelines="108" totallines="223" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="6" methodcoverage="0" />
+      <Class name="TMPro.Examples.TextMeshSpawner" coverage="0" coveredlines="0" coverablelines="33" totallines="79" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="TMPro.Examples.TMP_ExampleScript_01" coverage="0" coveredlines="0" coverablelines="18" totallines="64" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="TMPro.Examples.TMP_FrameRateCounter" coverage="0" coveredlines="0" coverablelines="65" totallines="134" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
+      <Class name="TMPro.Examples.TMP_TextEventCheck" coverage="0" coveredlines="0" coverablelines="40" totallines="73" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="7" methodcoverage="0" />
+      <Class name="TMPro.Examples.TMP_TextInfoDebugTool" coverage="0" coveredlines="0" coverablelines="344" totallines="652" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="14" methodcoverage="0" />
+      <Class name="TMPro.Examples.TMP_TextSelector_A" coverage="0" coveredlines="0" coverablelines="73" totallines="157" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
+      <Class name="TMPro.Examples.TMP_TextSelector_B" coverage="0" coveredlines="0" coverablelines="198" totallines="547" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="11" methodcoverage="0" />
+      <Class name="TMPro.Examples.TMP_UiFrameRateCounter" coverage="0" coveredlines="0" coverablelines="71" totallines="125" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
+      <Class name="TMPro.Examples.TMPro_InstructionOverlay" coverage="0" coveredlines="0" coverablelines="33" totallines="84" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="TMPro.Examples.VertexColorCycler" coverage="0" coveredlines="0" coverablelines="33" totallines="84" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="TMPro.Examples.VertexJitter" coverage="0" coveredlines="0" coverablelines="80" totallines="175" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="7" methodcoverage="0" />
+      <Class name="TMPro.Examples.VertexShakeA" coverage="0" coveredlines="0" coverablelines="80" totallines="161" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="7" methodcoverage="0" />
+      <Class name="TMPro.Examples.VertexShakeB" coverage="0" coveredlines="0" coverablelines="93" totallines="185" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="7" methodcoverage="0" />
+      <Class name="TMPro.Examples.VertexZoom" coverage="0" coveredlines="0" coverablelines="91" totallines="192" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="7" methodcoverage="0" />
+      <Class name="TMPro.Examples.WarpTextExample" coverage="0" coveredlines="0" coverablelines="70" totallines="144" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
+      <Class name="TMPro.TMP_DigitValidator" coverage="0" coveredlines="0" coverablelines="8" totallines="27" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="TMPro.TMP_PhoneNumberValidator" coverage="0" coveredlines="0" coverablelines="66" totallines="105" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="TMPro.TMP_TextEventHandler" coverage="0" coveredlines="0" coverablelines="107" totallines="254" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="20" methodcoverage="0" />
+      <Class name="uiTraversal" coverage="0" coveredlines="0" coverablelines="24" totallines="54" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="7" methodcoverage="0" />
+    </Assembly>
+  </Coverage>
+</CoverageReport>

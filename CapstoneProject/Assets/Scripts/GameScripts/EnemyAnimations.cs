@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -7,12 +8,18 @@ public class EnemyAnimations : StateMachineBehaviour
 {
 
     public float walkSpeed = 3f;
-    public float runSpeed = 6f;
+    public float runSpeed = 4f;
     public float attackRange = 3f;
     public float jumpHeight = 12f;
 
     private int jumpsLeft = 0;
     private int maxJumps = 2;
+
+    public float minJump = 5f;
+    public float maxJump = 10f;
+    private float nextJump = 0f;
+
+    public bool isJumping = false;
 
     public Timer timerScript;
 
@@ -39,12 +46,11 @@ public class EnemyAnimations : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
         if (timerScript.countdown > 0)
         {
             return;
         }
-
-        enemy.LookAtPlayer();
 
         Vector2 target = new Vector2(Player.position.x, rb.position.y);
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, runSpeed * Time.fixedDeltaTime);
@@ -55,45 +61,29 @@ public class EnemyAnimations : StateMachineBehaviour
             animator.SetTrigger("Jab");
         }
 
-        if (isGrounded)
-        {
-            jumpsLeft = maxJumps;
-        }
+        //if (timerScript.countdown <= 0 && Time.time >= nextJump)
+        //{
+        //    EnemyJump(animator);
+        //    nextJump = Time.time + UnityEngine.Random.Range(minJump, maxJump);
+        //}
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        isGrounded = collision.gameObject.CompareTag("Ground");
-    }
-
-    public void EnemyJump(Animator animator)
-    {
-        if (jumpsLeft > 0)
-        {
-            isGrounded = false;
-            rb.AddForce(Vector2.up * jumpHeight);
-            animator.SetTrigger("Jump");
-            jumpsLeft--;
-        }
-    }
-
-
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //void OnCollisionEnter2D(Collision2D collision)
     //{
-    //   // Implement code that processes and affects root motion
+    //    isGrounded = collision.gameObject.CompareTag("Ground");
     //}
 
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //public void EnemyJump(Animator animator)
     //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
+    //    Debug.Log("EnemyJump called, isGrounded: " + isGrounded);
+    //    isGrounded = false;
+    //    rb.AddForce(Vector2.up * jumpHeight);
+    //    animator.SetBool("isJumping", true);
     //}
 }

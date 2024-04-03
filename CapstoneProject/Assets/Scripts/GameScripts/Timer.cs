@@ -10,10 +10,14 @@ public class Timer : MonoBehaviour
     public static bool countdownPause = false;
     public GameObject countdownTimer;
 
-    public float gameTime = 10.0f;
+    public GameObject WinnerRestartMenu;
+
+    public float gameTime = 60.0f;
     public Text gameTimeText;
 
-    private void Start()
+    public static bool isPaused;
+
+    void OnEnable()
     {
         StartCoroutine(CountdownToGameStart());
         StartCoroutine(CountdownToGameFinish());
@@ -21,16 +25,19 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        if (gameTime < 0)
+        if (gameTime <= 0)
         {
             countdownText.text = "TIME OUT";
             countdownText.gameObject.SetActive(true);
-            Pause();
+            WinnerRestartMenu.GetComponent<RestartMenu>().pauseGame();
+            gameTime = 60.0f;
         }  
     }
 
     IEnumerator CountdownToGameStart()
     {
+        Debug.Log("CountdownToGameStart coroutine started");
+
         yield return new WaitForSeconds(1f);
 
         while(countdown > 0)
@@ -47,20 +54,6 @@ public class Timer : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         countdownText.gameObject.SetActive(false);
-    }
-
-    void Resume()
-    {
-        countdownTimer.SetActive(false);
-        Time.timeScale = 1f;
-        countdownPause = false;
-    }
-
-    void Pause()
-    {
-        countdownTimer.SetActive(true);
-        Time.timeScale = 0f;
-        countdownPause = true;
     }
 
     IEnumerator CountdownToGameFinish()
