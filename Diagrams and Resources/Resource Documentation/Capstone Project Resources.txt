@@ -1,0 +1,49 @@
+Capstone Project Resources
+
+**-- Books --**
+Unity from Zero to Proficiency - Patrick Felicia
+-	http://learntocreategames.com/books/
+
+
+**-- Class --**
+Bekkerin Github - Dr. Ernst Bekkering
+-	https://github.com/bekkerin/Snippets
+
+
+**-- Asset Purchases --**
+Fight 'Em Beat 'Em Music Pack - Joel Francis Buford
+-	https://joelfrancisburford.itch.io/fight-em-beat-em-music-pack
+50 Menu Interface SFX – ColorAlpha
+-	https://coloralpha.itch.io/50-menu-interface-sfx
+Complete UI Essential Pack – Crusenho
+-	https://crusenho.itch.io/complete-ui-essential-pack
+2D Pixel Art Character Template Asset Pack – ZeggyGames
+-	https://zegley.itch.io/2d-platformermetroidvania-asset-pack
+
+
+**-- Videos --**
+2D Player Movement - Game Code Library
+-	https://youtu.be/pYu36PLmdq0?si=R4sb8ggkAVWKE5Uk
+2D Player Animations - Game Code Library
+-	https://youtu.be/Sg_w8hIbp4Y?si=CyWmDxUBvdQzyCXY
+Dynamic Enemy Jump - Game Code Library
+-	https://youtu.be/roRYcRJqTwc?si=YqoSzFc3RVfGgiUj
+Drop Down Through Platforms – Game Code Library
+-	https://youtu.be/aWdwQJbg1Ds?si=IMIeCVDVS8Mq0EPa
+-------------------------------------------------------------
+How to Use Unity's New INPUT System Easily – Bmo
+-	https://youtu.be/HmXU4dZbaMw?si=pn9Smw7WYLgRKoFe
+Basic Saving and Loading in Unity with PlayerPrefs – Bmo
+-	https://youtu.be/x-5lrUSBwXY?si=3-ZxwukcPf6yjjY_
+6 Minute PAUSE MENU Unity Tutorial – Bmo
+-	https://youtu.be/9dYDBomQpBQ?si=c0xU091fMDtL0ofz
+-------------------------------------------------------------
+UI Creation – Brackeys
+-	https://youtu.be/zc8ac_qUXQY?si=MzcUoMEjjWW3SZrN
+Health Bar Creation – Brackeys
+-	https://www.youtube.com/watch?v=BLfNP4Sc_iA
+Melee Combat in Unity – Brackeys
+-	https://youtu.be/sPiVz1k-fEs?si=XVAKVmAYGULE6nAK
+-------------------------------------------------------------
+Unity Health and Damage System - Combat Tutorial(VRoid) - ReForge Mode
+-	https://youtu.be/NHuoiGtiZ7M?si=9uOkSpICIPH8VnFH
