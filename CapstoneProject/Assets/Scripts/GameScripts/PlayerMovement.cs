@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheckPos;
     public Vector2 groundCheckSize = new Vector2(1.45f, 0.05f);
     public LayerMask groundLayer;
+    public LayerMask oneWayLayer;
 
     //Variables for Gravity
     public float initialGravity = 2f;
@@ -190,17 +192,6 @@ public class PlayerMovement : MonoBehaviour
             isCrouching = false;
         }
     }
-
-    //public void ResetCharacterState()
-    //{
-    //    Debug.Log("Resetting Character State");
-    //    horizontalInput = 0f;
-    //    rb.velocity = Vector2.zero;
-
-    //    animator.SetBool("isCrouching", false);
-    //    animator.SetBool("isBlocking", false);
-    //    animator.SetBool("isJumping", false);
-    //}
 
     private void OnDrawGizmosSelected()
     {
