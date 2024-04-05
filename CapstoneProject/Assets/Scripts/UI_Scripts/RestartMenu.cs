@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +13,13 @@ public class RestartMenu : MonoBehaviour
         WinnerRestartMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+    }
+
+    public void resumeGame()
+    {
+        WinnerRestartMenu.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
     }
 
     public void restartGame()

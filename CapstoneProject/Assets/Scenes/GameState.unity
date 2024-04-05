@@ -274,7 +274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &127585109
 Transform:
   m_ObjectHideFlags: 0
@@ -2036,7 +2036,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897600619}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.022, y: -0.34399998, z: 0}
+  m_LocalPosition: {x: 0.026, y: -0.3308, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2411,6 +2411,7 @@ GameObject:
   - component: {fileID: 1114152360}
   - component: {fileID: 1114152359}
   - component: {fileID: 1114152358}
+  - component: {fileID: 1114152362}
   - component: {fileID: 1114152361}
   m_Layer: 5
   m_Name: QuitButton
@@ -2486,7 +2487,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1114152361}
         m_TargetAssemblyTypeName: uiTraversal, GameAssembly
-        m_MethodName: quitGame
+        m_MethodName: QuitToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1114152362}
+        m_TargetAssemblyTypeName: PauseMenu, GameAssembly
+        m_MethodName: resumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2547,6 +2560,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 459296582}
+--- !u!114 &1114152362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114152356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b04556e7689c0946af45fef4f297241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 2074553110}
 --- !u!1 &1163859121
 GameObject:
   m_ObjectHideFlags: 0
@@ -2579,7 +2605,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163859121}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.86, y: -1.0600002, z: 0}
+  m_LocalPosition: {x: 2.86, y: -1.137, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2617,11 +2643,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jabRange: 3
   punchRange: 5
-  jumpHeight: 12
+  jumpHeight: 14
   walkSpeed: 3
   jumpChance: 0.5
   Player: {fileID: 1685109333}
   timerScript: {fileID: 1207975832}
+  playerMoves: {fileID: 1685109335}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -3175,17 +3202,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207975830}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1665330676}
-  m_RootOrder: -2
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 320, y: 180}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1207975832
@@ -4070,7 +4097,6 @@ RectTransform:
   - {fileID: 2074553111}
   - {fileID: 667369014}
   - {fileID: 459296585}
-  - {fileID: 1207975831}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4486,7 +4512,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0022989511, y: -0.03130603}
+  m_Offset: {x: -0.00033855438, y: -0.03130603}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4497,7 +4523,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.17865205, y: 0.6078572}
+  m_Size: {x: 0.3421812, y: 0.6078572}
   m_EdgeRadius: 0
 --- !u!212 &1685109340
 SpriteRenderer:
@@ -5047,6 +5073,7 @@ GameObject:
   - component: {fileID: 1831701483}
   - component: {fileID: 1831701482}
   - component: {fileID: 1831701481}
+  - component: {fileID: 1831701484}
   - component: {fileID: 1831701480}
   m_Layer: 5
   m_Name: QuitButton
@@ -5135,7 +5162,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1831701480}
         m_TargetAssemblyTypeName: uiTraversal, GameAssembly
-        m_MethodName: quitGame
+        m_MethodName: QuitToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1831701484}
+        m_TargetAssemblyTypeName: RestartMenu, GameAssembly
+        m_MethodName: resumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5183,6 +5222,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1831701478}
   m_CullTransparentMesh: 1
+--- !u!114 &1831701484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831701478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b08cbfbeac7b64e9dc9c7f6cc7f446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WinnerRestartMenu: {fileID: 667369011}
 --- !u!1 &1876867859
 GameObject:
   m_ObjectHideFlags: 0
@@ -5233,7 +5285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2074553111
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5241,7 +5293,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074553110}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5250,7 +5302,7 @@ RectTransform:
   - {fileID: 1365203637}
   - {fileID: 1114152357}
   m_Father: {fileID: 1665330676}
-  m_RootOrder: -2
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

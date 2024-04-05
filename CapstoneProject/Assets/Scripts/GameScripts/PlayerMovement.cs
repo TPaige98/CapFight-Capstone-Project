@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -53,8 +51,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!PauseMenu.isPaused && !RestartMenu.isPaused)
         {
-            Debug.Log("Game is Paused, timer Countdown: " + timerScript.countdown);
-            if (timerScript != null && timerScript.countdown > 0)
+            if (timerScript.countdown > 0)
             {
                 horizontalInput = 0f;
                 rb.velocity = Vector2.zero;
@@ -100,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = localScale;
         }
     }
-    
+
     //JUMPING --------------------------------------------------------------- JUMPING//
     public void Jump(InputAction.CallbackContext context)
     {
@@ -155,8 +152,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed && timerScript.countdown <= 0 && isGrounded() && !RestartMenu.isPaused && !PauseMenu.isPaused)
         {
-             animator.SetTrigger("Jab");
-             JabSoundEffect.Play();
+            animator.SetTrigger("Jab");
+            JabSoundEffect.Play();
         }
     }
 
@@ -166,9 +163,15 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetTrigger("Punch");
             PunchSoundEffect.Play();
-        }    
+        }
     }
 
+    public bool isAttacking()
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerJab") || animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerPunch");
+    }
+
+    //DEFENSE ------------------------------------------------------------------------------------ DEFENSE//
     public void Block(InputAction.CallbackContext context)
     {
         if (context.performed && timerScript.countdown <= 0 && !RestartMenu.isPaused && !PauseMenu.isPaused)
@@ -193,6 +196,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //PHYSICS ----------------------------------------------------------------------------------------- PHYSICS//
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

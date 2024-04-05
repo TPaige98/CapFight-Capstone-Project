@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
 
     public static bool isPaused;
 
-    void OnEnable()
+    void Start()
     {
         StartCoroutine(CountdownToGameStart());
         StartCoroutine(CountdownToGameFinish());
@@ -25,6 +25,7 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Game is Paused, timer Countdown: " + countdown);
         if (gameTime <= 0)
         {
             countdownText.text = "TIME OUT";

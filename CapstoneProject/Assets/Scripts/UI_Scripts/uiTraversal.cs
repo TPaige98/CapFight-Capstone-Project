@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
-using System.Threading;
 
 public class uiTraversal : MonoBehaviour
 {
@@ -18,7 +14,7 @@ public class uiTraversal : MonoBehaviour
     public void FadeCompleteMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene("MainMenu");
     }
 
     //Fade to Game State Scene
@@ -29,7 +25,13 @@ public class uiTraversal : MonoBehaviour
 
     public void FadeCompleteGameStart()
     { 
-        SceneManager.LoadScene("GameState", LoadSceneMode.Single);
+        SceneManager.LoadScene("GameState");
+    }
+
+    public void QuitToMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
     }
     
     //Quit Game
