@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        Jump();   
+        //Jump();   
     }
 
     // MOVEMENT -------------------------------------------------------------------------- MOVEMENT//
