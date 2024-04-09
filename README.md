@@ -1,5 +1,10 @@
 # CapFight-Capstone-Project
 
+Created by: Trevor Paige
+For: Capstone
+Professor: Ernst Bekkering
+Semester: Spring 2024
+
 Welcome to Cap Fight, a basic fighting game built in Unity for my Capstone Project. 
 
 -- Files are ordered in 3 folders: Builds, CapstoneProject, and Diagrams and Resources
