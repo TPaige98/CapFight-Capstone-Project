@@ -4,35 +4,35 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float jabRange = 1f;
-    public float punchRange = 3f;
-    public float jumpHeight = 20f;
-    public float walkSpeed = 3f;
-    public float jumpChance = 0.5f;
-
+    //Variables for Enemy Movement
     float enemyDirection;
-    int jumpsLeft = 1;
+    public float walkSpeed = 3f;
+    private float blockCooldown = 0f;
 
+    //Variables for Enemy Jumping
+    public float jumpHeight = 20f;
+    int jumpsLeft = 1;
+    bool ableToJump = false;
+
+    //Variables for Enemy Attacking
+    public float jabRange = 2f;
+    public float punchRange = 4f;
+
+    //Variables for Checking Ground
+    public LayerMask groundLayer;
+    public Transform groundCheckPos;
+    public Vector2 groundCheckSize = new Vector2(1.45f, 0.05f);
+
+    //Variables for Unity Objects and Scripts
     public Transform Player;
     public Timer timerScript;
     public PlayerMovement playerMoves;
-
-    public LayerMask groundLayer;
-
-    public bool isFlipped = false;
-
-    public float blockChance = 0.0005f;
-    private bool isBlocking = false;
-
-    public float blockLength = 3.0f;
-    private float blockCooldown = 0f;
-
-    public Transform groundCheckPos;
-    public Vector2 groundCheckSize = new Vector2(1.45f, 0.05f);
-    private bool shouldJump;
-
     private Animator animator;
     Rigidbody2D rb;
+
+    //Audio Sources
+    [SerializeField] private AudioSource JabSoundEffect;
+    [SerializeField] private AudioSource PunchSoundEffect;
 
     void Start()
     {
@@ -40,6 +40,8 @@ public class Enemy : MonoBehaviour
         rb = animator.GetComponent<Rigidbody2D>();
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         playerMoves = Player.GetComponent<PlayerMovement>();
+
+        StartCoroutine(FirstEnemyJump());
     }
 
     void Update()
@@ -47,13 +49,17 @@ public class Enemy : MonoBehaviour
         Idle();
         LookAtPlayer();
         Move();
+
         Jab();
         Punch();
-        Block();
 
         Debug.Log("Is blocking: " + isBlocking);
         Debug.Log("Is Grounded: " + isGrounded());
+        Debug.Log("Jumps Left: " + jumpsLeft);
+    }
 
+    void FixedUpdate()
+    {
         if (isAttacking)
         {
             AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
@@ -62,11 +68,9 @@ public class Enemy : MonoBehaviour
                 isAttacking = false;
             }
         }
-    }
 
-    void FixedUpdate()
-    {
-        //Jump();   
+        Jump();
+        Block();
     }
 
     // MOVEMENT -------------------------------------------------------------------------- MOVEMENT//
@@ -95,15 +99,30 @@ public class Enemy : MonoBehaviour
 
     public void Jump()
     {
-        if (jumpsLeft > 0)
+        if (jumpsLeft > 0 && ableToJump)
         {
-            if (timerScript.countdown <= 0)
+            if (timerScript.countdown <= 0 && !isAttacking && !isBlocking && isGrounded())
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
                 animator.SetBool("isJumping", true);
                 jumpsLeft--;
+
+                StartCoroutine(WaitForJump());
             }
         }
+    }
+
+    IEnumerator FirstEnemyJump()
+    {
+        yield return new WaitForSeconds(8f);
+        ableToJump = true;
+    }
+
+    IEnumerator WaitForJump()
+    {
+        yield return new WaitForSeconds(8f);
+
+        jumpsLeft = 1;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -111,7 +130,6 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             animator.SetBool("isJumping", false);
-            jumpsLeft = 1;
         }
     }
 
@@ -121,53 +139,67 @@ public class Enemy : MonoBehaviour
     }
 
     //DEFENSE --------------------------------------------------------------------- DEFENSE//
+    public bool isBlocking = false;
+
     public void Block()
     {
-        if (timerScript.countdown <= 0 && !isAttacking && blockLength > 0 && isGrounded())
+        if (timerScript.countdown <= 0 && !isAttacking && !isBlocking && isGrounded() && blockCooldown <= 0)
         {
             if (Vector2.Distance(Player.position, rb.position) <= punchRange && playerMoves.isAttacking())
             {
                 isBlocking = true;
                 animator.SetBool("isBlocking", true);
-                rb.velocity = Vector2.zero;
-                blockLength -= Time.deltaTime;
+                rb.velocity = new Vector2(0f, rb.velocity.y);
+
+                StartCoroutine(WaitForBlock());
             }
         }
 
-        if (blockLength <= 0)
+        if (blockCooldown > 0)
         {
-            isBlocking = false;
-            animator.SetBool("isBlocking", false);
-            blockLength = 3.0f;
+            blockCooldown -= Time.deltaTime;
         }
+    }
+
+    IEnumerator WaitForBlock()
+    {
+        yield return new WaitForSeconds(3f);
+
+        isBlocking = false;
+        animator.SetBool("isBlocking", false);
+        blockCooldown = 3.0f;
     }
 
     //ATTACKS ------------------------------------------------------------------- ATTACKS//
 
-    private bool isAttacking = false;
+    public bool isAttacking = false;
 
     public void Punch()
     {
-        if (Vector2.Distance(Player.position, rb.position) <= punchRange && !isAttacking && isGrounded())
+        if (Vector2.Distance(Player.position, rb.position) <= punchRange && !isAttacking && !isBlocking && isGrounded())
         {
+            Debug.Log("Punch Triggered");
             isAttacking = true;
             rb.velocity = Vector2.zero;
             animator.SetTrigger("Punch");
+            PunchSoundEffect.Play();
         }
     }
 
     public void Jab()
     {
-        if (Vector2.Distance(Player.position, rb.position) <= jabRange && !isAttacking && isGrounded())
+        if (Vector2.Distance(Player.position, rb.position) <= jabRange && !isAttacking && !isBlocking && isGrounded())
         {
             isAttacking = true;
             rb.velocity = Vector2.zero;
             animator.SetTrigger("Jab");
+            JabSoundEffect.Play();
         }
     }
 
 
     //ORIENTATION ------------------------------------------------------------------- ORIENTATION//
+    public bool isFlipped = false;
 
     public void LookAtPlayer()
     {

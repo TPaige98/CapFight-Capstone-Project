@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,7 +17,15 @@ public class PauseMenu : MonoBehaviour
 
     public void pauseGame()
     {
+        Debug.Log("Game Paused");
         pauseMenu.SetActive(true);
+
+        StartCoroutine(delayPause());
+    }
+
+    IEnumerator delayPause()
+    {
+        yield return null;
         Time.timeScale = 0f;
         isPaused = true;
     }

@@ -25,11 +25,11 @@ public class PlayerMovement : MonoBehaviour
     public float fallSpeedGravity = 2f;
 
     //Variables for Blocking and Direction
-    bool isBlocking;
+    public bool isBlocking = false;
     bool isCrouching;
     bool isFacingRight = true;
 
-    //Variables for Unity Objects
+    //Variables for Unity Objects and Scripts
     public Rigidbody2D rb;
     public Transform opponentTransform;
     public Timer timerScript;
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                if (isGrounded())
+                if (isGrounded() && !isBlocking)
                 {
                     rb.velocity = new Vector2(horizontalInput * walkSpeed, rb.velocity.y);
                 }
@@ -71,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
             animator.SetBool("isCrouching", isCrouching);
             animator.SetBool("isBlocking", isBlocking);
+
             animator.SetFloat("HorizontalMovement", Math.Abs(rb.velocity.x));
             animator.SetFloat("VerticalMovement", rb.velocity.y);
 
@@ -83,11 +84,14 @@ public class PlayerMovement : MonoBehaviour
     //MOVEMENT ------------------------------------------------------------ MOVEMENT//
     public void Move(InputAction.CallbackContext context)
     {
-        horizontalInput = context.ReadValue<Vector2>().x;
-        rb.velocity = new Vector2(horizontalInput * walkSpeed, rb.velocity.y);
+        if (!isBlocking)
+        {
+            horizontalInput = context.ReadValue<Vector2>().x;
+            rb.velocity = new Vector2(horizontalInput * walkSpeed, rb.velocity.y);
+        }
     }
 
-    void FlipCharacter()
+        void FlipCharacter()
     {
         if (!isFacingRight && horizontalInput > 0f || isFacingRight && horizontalInput < 0f)
         {
@@ -177,6 +181,8 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && timerScript.countdown <= 0 && !RestartMenu.isPaused && !PauseMenu.isPaused)
         {
             isBlocking = true;
+            horizontalInput = 0f;
+            rb.velocity = new Vector2(0f, rb.velocity.y);
         }
         else
         {
