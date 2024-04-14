@@ -120,7 +120,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator WaitForJump()
     {
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(9f);
 
         jumpsLeft = 1;
     }
@@ -163,7 +163,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator WaitForBlock()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
 
         isBlocking = false;
         animator.SetBool("isBlocking", false);

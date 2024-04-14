@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,9 +9,13 @@ public class Timer : MonoBehaviour
     public Text countdownText;
 
     public static bool countdownPause = false;
-    public GameObject countdownTimer;
 
-    public GameObject WinnerRestartMenu;
+    public GameObject countdownTimer;
+    public GameObject restartMenu;
+
+    public PlayerHealth playerHealth;
+    public EnemyHealth enemyHealth;
+    public WinCounter winCount;
 
     public float gameTime = 60.0f;
     public Text gameTimeText;
@@ -30,8 +35,18 @@ public class Timer : MonoBehaviour
         {
             countdownText.text = "TIME OUT";
             countdownText.gameObject.SetActive(true);
-            WinnerRestartMenu.GetComponent<RestartMenu>().pauseGame();
             gameTime = 60.0f;
+
+            if (enemyHealth.health > playerHealth.health)
+            {
+                winCount.UpdateEnemyWins();
+            }
+            else if (playerHealth.health > enemyHealth.health)
+            {
+                winCount.UpdatePlayerWins();
+            }
+
+            restartMenu.GetComponent<RestartMenu>().pauseGame();
         }  
     }
 

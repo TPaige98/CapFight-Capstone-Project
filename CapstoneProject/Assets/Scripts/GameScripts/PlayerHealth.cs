@@ -5,15 +5,18 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public int max = 100;
-    private int health;
+    public int health;
 
     public HealthBars healthBar;
     public Timer timerScript;
+    public GameObject restartMenu;
+    public WinCounter winCount;
 
     void Start()
     {
         health = max;
         healthBar.setMaxHealth(max);
+        restartMenu.SetActive(false);
     }
 
     public void TakeDamage(int damage)
@@ -24,6 +27,8 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log("death");
+            winCount.UpdateEnemyWins();
+            restartMenu.GetComponent<RestartMenu>().pauseGame();
         }
     }
 }
