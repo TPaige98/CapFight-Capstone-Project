@@ -1,16 +1,21 @@
 Capstone Project Resources
 
 **-- Books --**
+------------------------------------------------------------
 Unity from Zero to Proficiency - Patrick Felicia
 -	http://learntocreategames.com/books/
+------------------------------------------------------------
 
 
 **-- Class --**
+------------------------------------------------------------
 Bekkerin Github - Dr. Ernst Bekkering
 -	https://github.com/bekkerin/Snippets
+------------------------------------------------------------
 
 
 **-- Asset Purchases --**
+------------------------------------------------------------
 Fight 'Em Beat 'Em Music Pack - Joel Francis Buford
 -	https://joelfrancisburford.itch.io/fight-em-beat-em-music-pack
 50 Menu Interface SFX – ColorAlpha
@@ -19,9 +24,11 @@ Complete UI Essential Pack – Crusenho
 -	https://crusenho.itch.io/complete-ui-essential-pack
 2D Pixel Art Character Template Asset Pack – ZeggyGames
 -	https://zegley.itch.io/2d-platformermetroidvania-asset-pack
+------------------------------------------------------------
 
 
 **-- Videos --**
+------------------------------------------------------------
 2D Player Movement - Game Code Library
 -	https://youtu.be/pYu36PLmdq0?si=R4sb8ggkAVWKE5Uk
 2D Player Animations - Game Code Library
@@ -47,3 +54,15 @@ Melee Combat in Unity – Brackeys
 -------------------------------------------------------------
 Unity Health and Damage System - Combat Tutorial(VRoid) - ReForge Mode
 -	https://youtu.be/NHuoiGtiZ7M?si=9uOkSpICIPH8VnFH
+-------------------------------------------------------------
+How to use UI Slider to change the volume of Audio Sources across scenes - Unity Tutorial - 2019
+-	https://youtu.be/9ROolmPSC70?si=rFbkYqSsPqwH3-CF
+-------------------------------------------------------------
+
+
+**-- AI Prompts to Help Learn C# Coding --**
+-------------------------------------------------------------
+- Asked to help lock player movement when blocking. Taught me about constraints. 
+- Asked to help set up animations properly. Taught me how to use AnimatorStateInfo.
+- Asked to help set up cooldowns and timers for animations. Taught me how to use Time.deltaTime to set up blocking cooldown for enemy.
+-------------------------------------------------------------

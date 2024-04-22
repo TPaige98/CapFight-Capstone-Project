@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -17,6 +18,10 @@ public class Enemy : MonoBehaviour
     //Variables for Enemy Attacking
     public float jabRange = 2f;
     public float punchRange = 4f;
+
+    //Variables for Enemey Attack Timing
+    public int combo = 0;
+    public int maxCombo = 2;
 
     //Variables for Checking Ground
     public LayerMask groundLayer;
@@ -149,7 +154,7 @@ public class Enemy : MonoBehaviour
             {
                 isBlocking = true;
                 animator.SetBool("isBlocking", true);
-                rb.velocity = new Vector2(0f, rb.velocity.y);
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
                 StartCoroutine(WaitForBlock());
             }
@@ -167,7 +172,10 @@ public class Enemy : MonoBehaviour
 
         isBlocking = false;
         animator.SetBool("isBlocking", false);
-        blockCooldown = 3.0f;
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        blockCooldown = 4.0f;
     }
 
     //ATTACKS ------------------------------------------------------------------- ATTACKS//
@@ -176,24 +184,39 @@ public class Enemy : MonoBehaviour
 
     public void Punch()
     {
-        if (Vector2.Distance(Player.position, rb.position) <= punchRange && !isAttacking && !isBlocking && isGrounded())
+        if (Vector2.Distance(Player.position, rb.position) <= punchRange && !isAttacking && !isBlocking && isGrounded() && combo < maxCombo)
         {
             Debug.Log("Punch Triggered");
             isAttacking = true;
             rb.velocity = Vector2.zero;
             animator.SetTrigger("Punch");
             PunchSoundEffect.Play();
+            maxCombo--;
+
+            StartCoroutine(Combo());
         }
     }
 
     public void Jab()
     {
-        if (Vector2.Distance(Player.position, rb.position) <= jabRange && !isAttacking && !isBlocking && isGrounded())
+        if (Vector2.Distance(Player.position, rb.position) <= jabRange && !isAttacking && !isBlocking && isGrounded() && combo < maxCombo)
         {
             isAttacking = true;
             rb.velocity = Vector2.zero;
             animator.SetTrigger("Jab");
             JabSoundEffect.Play();
+            maxCombo--;
+
+            StartCoroutine(Combo());
+        }
+    }
+
+    IEnumerator Combo()
+    {
+        if (maxCombo <= 0)
+        {
+            yield return new WaitForSeconds(4f);
+            maxCombo = 3;
         }
     }
 

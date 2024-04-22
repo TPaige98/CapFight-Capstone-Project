@@ -182,11 +182,15 @@ public class PlayerMovement : MonoBehaviour
         {
             isBlocking = true;
             horizontalInput = 0f;
-            rb.velocity = new Vector2(0f, rb.velocity.y);
+
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
         else
         {
             isBlocking = false;
+
+            rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
 

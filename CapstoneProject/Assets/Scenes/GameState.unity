@@ -781,8 +781,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f8bace1dfe61a5b47940d23845adc168, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_PlayOnAwake: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3162,6 +3162,8 @@ MonoBehaviour:
   jumpHeight: 14.5
   jabRange: 2
   punchRange: 4
+  combo: 0
+  maxCombo: 2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -3752,7 +3754,7 @@ MonoBehaviour:
   playerHealth: {fileID: 1685109334}
   enemyHealth: {fileID: 1163859123}
   winCount: {fileID: 974291169}
-  gameTime: 10
+  gameTime: 90
   gameTimeText: {fileID: 1183751957}
 --- !u!1 &1291418765
 GameObject:
