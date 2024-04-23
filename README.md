@@ -39,6 +39,15 @@ Welcome to Cap Fight, a basic fighting game built in Unity for my Capstone Proje
 
 ------------------------------------------------------------------------------------------
 
-All files are included in the GitHub, however, to access some files easier. I have provided links to their locations. 
+All game files are included in the GitHub, however, to access some files easier. I have provided links to their locations. 
 
 Game Scripts: https://github.com/TPaige98/CapFight-Capstone-Project/tree/main/CapstoneProject/Assets/Scripts
+
+------------------------------------------------------------------------------------------
+
+Links to items and resources outside of the GitHub repository.
+
+Play Test Results: https://docs.google.com/spreadsheets/d/143gf62Esxf3qZ5tv517rJKo1JrLtUoWuzrrY7AAwLzk/edit?usp=sharing
+
+Video of Game Demonstration: 
+Video of Game Project: 
