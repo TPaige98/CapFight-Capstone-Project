@@ -36,3 +36,9 @@ Welcome to Cap Fight, a basic fighting game built in Unity for my Capstone Proje
 - Punch: I
 
 - Block: Space
+
+------------------------------------------------------------------------------------------
+
+All files are included in the GitHub, however, to access some files easier. I have provided links to their locations. 
+
+Game Scripts: https://github.com/TPaige98/CapFight-Capstone-Project/tree/main/CapstoneProject/Assets/Scripts
