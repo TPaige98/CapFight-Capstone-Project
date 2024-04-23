@@ -52,4 +52,3 @@ Links to items and resources outside of the GitHub repository.
 Play Test Results: https://docs.google.com/spreadsheets/d/143gf62Esxf3qZ5tv517rJKo1JrLtUoWuzrrY7AAwLzk/edit?usp=sharing
 
 Video of Game Demonstration: 
-Video of Game Project: 
