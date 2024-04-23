@@ -1,9 +1,9 @@
 # CapFight-Capstone-Project
 
-Created by: Trevor Paige
-For: Capstone
-Professor: Ernst Bekkering
-Semester: Spring 2024
+Created by: Trevor Paige  
+For: Capstone  
+Professor: Ernst Bekkering  
+Semester: Spring 2024  
 
 ------------------------------------------------------------------------------------------
 
