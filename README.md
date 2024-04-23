@@ -19,12 +19,15 @@ Welcome to Cap Fight, a basic fighting game built in Unity for my Capstone Proje
 
 -- To access the game through WebGL, please follow this link: [CapFight](https://tpaige98.github.io/CapFight-Capstone-Project/)
 
+------------------------------------------------------------------------------------------
+
 -- Directions --
 - Click Play to Start the Game
 - Wait for countdown to say Fight!
 - Try and beat up enemy until health or timer hits 0
 - Win or Lose based on health compared to enemy!
 
+------------------------------------------------------------------------------------------
 
 -- How to Play Cap Fight --
 - Move Left: A  
