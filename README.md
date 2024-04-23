@@ -27,8 +27,12 @@ Welcome to Cap Fight, a basic fighting game built in Unity for my Capstone Proje
 
 
 -- How to Play Cap Fight --
-- Move Left: A  - Move Right: D  - Jump: W  - Crouch: S  - Jab: U  - Punch: I
-
+- Move Left: A  
+- Move Right: D  
+- Jump: W  
+- Crouch: S  
+- Jab: U  
+- Punch: I  
 - Block: Space
 
 ------------------------------------------------------------------------------------------
