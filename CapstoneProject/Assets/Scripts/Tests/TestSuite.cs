@@ -9,51 +9,98 @@ using UnityEngine.SceneManagement;
 
 public class TestSuite
 {
+
+    /*
+    var asyncLoad = SceneManager.LoadSceneAsync("GameState");
+    yield return asyncLoad;
+    */
+
+    /*
+    var asyncLoad = SceneManager.LoadSceneAsync("MainMenu");
+    yield return asyncLoad;
+    */
+
     [UnityTest]
     public IEnumerator CheckPlayerMovement()
     {
-        yield return new WaitForSeconds(0);
+        var asyncLoad = SceneManager.LoadSceneAsync("GameState");
+        yield return asyncLoad;
+
+        var player = GameObject.Find("Player");
+        var playerMovement = player.GetComponent<PlayerMovement>();
+
+        yield return new WaitForSeconds(4.5f);
+
+        playerMovement.horizontalInput = 1.0f;
+
+        yield return new WaitForSeconds(1.5f);
+
+        Assert.Greater(player.transform.position.x, 0f);
     }
 
     [UnityTest]
     public IEnumerator CheckEnemyMovement()
     {
-        yield return new WaitForSeconds(0);
+        var asyncLoad = SceneManager.LoadSceneAsync("GameState");
+        yield return asyncLoad;
+
+        var enemy = GameObject.Find("Enemy");
+        var enemyMovement = enemy.GetComponent<Enemy>();
+
+        yield return new WaitForSeconds(4.5f);
+
+        enemyMovement.walkSpeed = 1.0f;
+
+        yield return new WaitForSeconds(1.5f);
+
+        Assert.Greater(enemy.transform.position.x, 0f);
     }
 
     [UnityTest]
-    public IEnumerator CheckPlayerAttack()
+    public IEnumerator CheckCountdownTimer()
     {
-        yield return new WaitForSeconds(0);
+        var asyncLoad = SceneManager.LoadSceneAsync("GameState");
+        yield return asyncLoad;
+
+        var timerObject = GameObject.Find("Timer");
+        var timer = timerObject.GetComponent<Timer>();
+
+        timer.countdown = 3.0f;
+
+        yield return new WaitForSeconds(2.5f);
+
+        Assert.Less(timer.countdown, 3.0f);
     }
 
     [UnityTest]
-    public IEnumerator CheckEnemyAttack()
+    public IEnumerator CheckGameTimer()
     {
-        yield return new WaitForSeconds(0);
+        var asyncLoad = SceneManager.LoadSceneAsync("GameState");
+        yield return asyncLoad;
+
+        var timerObject = GameObject.Find("Timer");
+        var timer = timerObject.GetComponent<Timer>();
+
+        timer.gameTime = 60;
+
+        yield return new WaitForSeconds(5.5f);
+
+        Assert.Less(timer.gameTime, 60);
     }
 
-    [UnityTest]
-    public IEnumerator CheckTimer()
-    {
-        yield return new WaitForSeconds(0);
-    }
+    //[UnityTest]
+    //public IEnumerator CheckPlayerAttack()
+    //{
+    //    var asyncLoad = SceneManager.LoadSceneAsync("GameState");
+    //    yield return asyncLoad;
 
-    [UnityTest]
-    public IEnumerator CheckPauseMenuActive()
-    {
-        yield return new WaitForSeconds(0);
-    }
+    //    var player = GameObject.Find("Player");
+    //    var playerAttack = player.GetComponent<PlayerMovement>();
 
-    [UnityTest]
-    public IEnumerator CheckRestartMenuActive()
-    {
-        yield return new WaitForSeconds(0);
-    }
+    //    yield return new WaitForSeconds(4.5f);
 
-    [UnityTest]
-    public IEnumerator CheckWinCounter()
-    {
-        yield return new WaitForSeconds(0);
-    }
+    //    var attack = playerAttack.GetComponent<PlayerInput>().Jab;
+
+    //    Assert.IsTrue(playerAttack.isAttacking());
+    //}
 }
