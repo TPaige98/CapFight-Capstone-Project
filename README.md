@@ -15,7 +15,14 @@ Welcome to Cap Fight, a basic fighting game built in Unity for my Capstone Proje
 -- CapstoneProject includes all of the assets, project settings, and packages
 -- Diagrams and Resources includes all diagrams created and resources used for the project
 
--- To access the game through WebGL, please follow this link: [CapFight](https://tpaige98.github.io/CapFight-Capstone-Project/)
+-- To Download Game, go to: [Current Build](https://github.com/TPaige98/CapFight-Capstone-Project/blob/main/PastBuilds/CurrentBuild.zip)  
+-- 1. Proceed to download the zip file.  
+-- 2. Extract the files when finished downloading.  
+-- 3. Open the CapstoneProject.exe  
+-- 4. Play and Enjoy!  
+
+-- To access the game through WebGL, please follow this link: [CapFight](https://tpaige98.github.io/CapFight-Capstone-Project/)  
+-- Note: If game is accessed through WebGL, enemy movement may break on first playthrough! Doesn't happen in downloadable build!
 
 ------------------------------------------------------------------------------------------
 
@@ -40,7 +47,8 @@ Welcome to Cap Fight, a basic fighting game built in Unity for my Capstone Proje
 
 All game files are included in the GitHub, however, to access some files easier. I have provided links to their locations. 
 
-[Game Scripts](https://github.com/TPaige98/CapFight-Capstone-Project/tree/main/CapstoneProject/Assets/Scripts)  
+[All Scripts](https://github.com/TPaige98/CapFight-Capstone-Project/tree/main/CapstoneProject/Assets/Scripts)  
+[Test Script](https://github.com/TPaige98/CapFight-Capstone-Project/blob/main/CapstoneProject/Assets/Scripts/Tests/TestSuite.cs)  
 [Diagrams](https://github.com/TPaige98/CapFight-Capstone-Project/tree/main/Diagrams%20and%20Resources)  
 [Resources](https://github.com/TPaige98/CapFight-Capstone-Project/tree/main/Diagrams%20and%20Resources/Resource%20Documentation)  
 
