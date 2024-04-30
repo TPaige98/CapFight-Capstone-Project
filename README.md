@@ -56,6 +56,9 @@ All game files are included in the GitHub, however, to access some files easier.
 
 Links to items and resources outside of the GitHub repository.
 
-[Play Test Results](https://docs.google.com/spreadsheets/d/143gf62Esxf3qZ5tv517rJKo1JrLtUoWuzrrY7AAwLzk/edit?usp=sharing)
+[Play Test Results](https://docs.google.com/spreadsheets/d/143gf62Esxf3qZ5tv517rJKo1JrLtUoWuzrrY7AAwLzk/edit?usp=sharing)  
+-- Play Tests were conducted by sending out game links/downloads to friends, family, and classmates.  
+-- Testers were advised to play the game, give honest feedback, and upload results to the google form.  
 
-Video of Game Demonstration: 
+[Video of CapFight Intro/Gameplay](https://youtu.be/NPVRA_IbG5I)  
+-- This link sends the user to a video that introduces CapFight and shows how to play the game!
