@@ -60,5 +60,5 @@ Links to items and resources outside of the GitHub repository.
 -- Play Tests were conducted by sending out game links/downloads to friends, family, and classmates.  
 -- Testers were advised to play the game, give honest feedback, and upload results to the google form.  
 
-[Video of CapFight Intro/Gameplay](https://youtu.be/NPVRA_IbG5I)  
+[Video of CapFight Intro/Gameplay](https://youtu.be/T1U5_7z5MlM)  
 -- This link sends the user to a video that introduces CapFight and shows how to play the game!
